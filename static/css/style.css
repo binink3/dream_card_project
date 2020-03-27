@@ -1,11 +1,14 @@
 *{
-	margin: 0;
-	padding: 0;
-	font-family: 'Spoqa Han Sans', 'Sans-serif';
+    margin: 0;
+    padding: 0;
+    font-family: 'Spoqa Han Sans', 'Sans-serif';
 }
 
 ul, li{
 	list-style: none;
+}
+.margin-bottom-20{
+    margin-bottom: 20px;
 }
 #first-page-scroll{
 	background-image: url("../img/background.jpg");
@@ -32,10 +35,11 @@ ul, li{
 	display: inline-block;
 }
 .cities-dropdown{
-	top: 300px;
+	margin-top: 15px !important;
 }
 .cities-list-group{
-	height: 300px;
+    width: 197px;
+	height: 200px;
 	overflow: scroll;
 	text-align: center;
 }
@@ -78,29 +82,34 @@ ul, li{
 }
 #restaurant-data-wrap{
 	/*width: 100%;*/
-	background-color: pink;
+	/*background-color: pink;*/
     width: 100%;
     margin: 0 auto;
-    padding-top: 80px;
+    padding-top: 20px;
     padding-bottom: 80px;
-    max-width: 1300px;
+    max-width: 1200px;
     position: relative;
 }
+.county-name-based-restaurant-wrap{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
 .restaurant-data{
-	max-width: 1300px;
+	/*max-width: 1300px;*/
 	height: auto;
 	margin: 0 auto;
-	background-color: skyblue;
+	/*background-color: skyblue;*/
 }
 .restaurant-filter{
 	width: 50%;
 	margin: 0 auto;
 }
 .restaurant-data-lists{
-	background-color: lightgreen;
+	/*background-color: lightgreen;*/
     width: 100%;
     margin: 0 auto;
-    padding-top: 80px;
+    padding-top: 30px;
     padding-bottom: 80px;
     max-width: 1300px;
     position: relative;
@@ -109,22 +118,54 @@ ul, li{
 	width: 100%;
     height: auto;
     margin-top: 15px;
-    display: flex;
+    /*display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
 }
 .restaurant-infos{
-    width: 40%;
+    width: 93%;
+    height: 200px;
     box-shadow: 0 2px 20px 0 rgba(0,0,0,.06);
-    flex: 1 0 21%;
-    margin: 5px;
-    padding: 10px;
+    /* flex: 1 0 21%; */
+    margin-bottom: 20px;
+    padding: 20px;
     border-radius: 5px;
-    background-color: grey;
+    /*background-color: grey;*/
+    margin: 0 auto;
 }
-
-
-
+.restaurant-info-left{
+    float: left;
+    background: skyblue;
+    width: 500px;
+    height: 160px;
+    /*width: 32vw;
+    height: 39vh;*/
+}
+.restaurant-name{
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.restaurant-address, .restaurant-phonenumber{
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.restaurant-type{
+    font-size: 15px;
+}
+.restaurant-info-right{
+    float: right;
+    width: 550px;
+    height: 160px;
+    /*width: 40vw;*/
+    /*height: 39vh;*/
+    background-color: pink;
+}
+.restaurant-map{
+    /*width: 40vw;
+    height: 39vh;
+    background-color: pink;*/
+}
 
 
 
