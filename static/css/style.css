@@ -19,7 +19,11 @@ ul, li, dl, ol {
     background-position: top center;
 }
 .first-page-wrap{
-    padding-top: 300px;
+    /*padding-top: 300px;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .title{
@@ -40,6 +44,7 @@ ul, li, dl, ol {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    margin-bottom: 10px;
 }
 .city-dropdown, #restaurant-search{
     display: inline-block;
@@ -64,17 +69,17 @@ ul, li, dl, ol {
     background-color: #1e5693 !important;
     opacity: 0.7;
 }
-.cities-list-group{
+.counties-list-group{
     width: 215px;
     height: 190px;
     text-align: center;
     overflow-y: scroll;
     overflow-x: hidden;
 }
-.cities-list-group > li {
+.counties-list-group > li {
     cursor: pointer;
 }
-.cities-list-group > li:hover {
+.counties-list-group > li:hover {
     background-color: #e8eff9;
 }
 .form-check-input {
@@ -144,7 +149,15 @@ ul, li, dl, ol {
 .restaurant-name-search:hover {
     background-color: #1e5693;
 }
-
+.restaurants-names-list{
+    height: 200px;
+    overflow: scroll;
+    margin-bottom: 0 !important;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-left: 225px;
+    width: 69%;
+}
 #restaurant-data-wrap{
     width: 100%;
     margin: 0 auto;
@@ -166,7 +179,7 @@ ul, li, dl, ol {
     /*background-color: skyblue;*/
 }
 .restaurant-filter{
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }

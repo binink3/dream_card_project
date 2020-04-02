@@ -1,13 +1,12 @@
+let all_restaurants_infos;
 $(document).ready(function(){
-	let all_restaurants_infos;
-
 	$("#restaurant-data-wrap").css("display", "none");
 	$(".restaurant-name-search").on("click", function(){
 		$("#restaurant-data-wrap").css("display", "block");
 		$("html, body").animate(
 			{scrollTop:$("#restaurant-data-wrap").offset().top
 		}, 1000, "swing");
-		$(".cities-list-group").css("display", "none");
+		$(".counties-list-group").css("display", "none");
 	});
 
 	$("#first-page-scroll").css({ height: $(window).innerHeight() });
@@ -15,43 +14,57 @@ $(document).ready(function(){
 		$("#first-page-scroll").css({ height: $(window).innerHeight() });
 	});
 
-	$(".restaurants_names_list").css("display", "none");
-	$("#restaurant-search-input").keyup(function(){
+	$(".restaurants-names-list").css("display", "none");
+	$("#restaurant-input").keyup(function(){
 		let restaurantSearched = $(this).val();
 		if(restaurantSearched == ""){
-			$(".restaurants_names_list").css("display", "none");	
+			$(".restaurants-names-list").css("display", "none");	
 		} else{
-			$(".restaurants_names_list").css("display", "block");
-			$(".restaurants_names_list > li").mouseenter(function(){
+			$(".restaurants-names-list").css("display", "block");
+			$(".restaurants-names-list > li").mouseenter(function(){
 				$(this).css("background-color", "#5a4a4a2e");
 				$(this).css("cursor", "pointer");
 			});
-			$(".restaurants_names_list > li").mouseleave(function(){
+			$(".restaurants-names-list > li").mouseleave(function(){
 				$(this).css("background-color", "transparent");
 			});
 		}
 	});
 
+	$("#restaurant-input").on("keyup", function() {
+	    let restuarnats_list_match = $(this).val();
+	    $(".restaurants-names-list li").filter(function() {
+	      $(this).toggle($(this).text().indexOf(restuarnats_list_match) > -1)
+	    });
+  	});
+	let restaurant_name_val = $("#restaurant-input").val();
 	$.ajax({
 		type: "GET",
 		url: "/county",
-		data:{},
+		data:{county_name_give: restaurant_name_val},
 		success: function(response){
 			all_restaurants_infos = response;
 			for (let i = 0; i < response.length; i++){
 				let restaurant_name = response[i]["restaurant_name"];
-				let restaurants_infos_list = '<li class="restaurant_names" onclick="restaurant_name_value(this)">'+restaurant_name+'</li>'
-				$(".restaurants_names_list").append(restaurants_infos_list);
-				console.log(restaurants_infos_list);
+				let restaurants_infos_list = '<li class="restaurant_names list-group-item" onclick="restaurant_name_value(this)">'+restaurant_name+'</li>'
+				$(".restaurants-names-list").append(restaurants_infos_list);
+				// console.log(restaurants_infos_list);
+				console.log(response);
 			}
 		}
 	});
 
 });
 
+function restaurant_name_value(input){
+	let restaurant_name = $("#restaurant-input").text();
+	$("#restaurant-input").val(restaurant_name);
+
+}
+
 // 클릭 된 "구" 보여주기
 $(function(){
-	$(".cities-list").on("click",function(){
+	$(".county-list").on("click",function(){
 		$("#dropdownMenuButton").text($(this).text());
 	});
 });
@@ -65,21 +78,22 @@ function restaurantSearch(){
 			break;
 		}
 	}
-	let county_name_span = restaurants_names["restaurant_name"];
+	let county_name_span = restaurant_name_val;
 	let county_name_based_restaurant_span = '<span class="county-name-based-restaurant-span">'+county_name_span+'에 있는 식당 정보입니다</span>'
+	// console.log(county_name_span);
 
 	$(".county-name-based-restaurant-wrap").text(county_name_based_restaurant_span);
 
 	$.ajax({
 		type: "POST",
 		url: "/county",
-		data: {county_name_give: restaurant_name_val},
+		data: {restaurant_name_give: restaurant_name_val},
 		success: function(response){
 			$(".restaurant-data-lists").empty();
 			for (let i = 0; i < response.length; i++){
 				let restaurant_name = response[i]["restaurant_name"];
 				let restaurant_address = response[i]["restaurant_address"];
-				let restaurant_phoneNumber = response[i]["restaurant_phoneNumber"];
+				let restaurant_phoneNumber = response[i]["restaurant_phoneNumber"]
 				let restaurant_type = response[i]["restaurant_type"];
 
 				let restaurant_data_lists = '<div class="restaurant-info-box">\
@@ -93,7 +107,7 @@ function restaurantSearch(){
 						</div>\
 						<div class="restaurant-phonenumber">\
 							<i class="fas fa-phone-square"></i>\
-							<span>'+restaurant_phoneNumber+'</span>\
+							<span class="restaurant_phoneNumber">'+restaurant_phoneNumber+'</span>\
 						</div>\
 						<div class="restaurant-type">\
 							<span>'+restaurant_type+'</span>\
@@ -106,6 +120,17 @@ function restaurantSearch(){
 		}
 	});
 }
+
+// function phoneFormat(){
+
+//     let str = $(".restaurant_phoneNumber").text().trim();    
+
+//     let phone = str.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3");
+
+//     $(".restaurant_phoneNumber").text(phone);
+//     console.log(str);
+// }
+
 
 
 
