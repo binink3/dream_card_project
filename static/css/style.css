@@ -71,7 +71,7 @@ ul, li, dl, ol {
 }
 .counties-list-group{
     width: 215px;
-    height: 190px;
+    height: 186px;
     text-align: center;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -166,7 +166,7 @@ ul, li, dl, ol {
     max-width: 1200px;
     position: relative;
 }
-.county-name-based-restaurant-wrap{
+#county-name-based-restaurant-wrap{
     text-align: center;
     font-size: 30px;
     margin-bottom: 20px;
@@ -189,7 +189,7 @@ ul, li, dl, ol {
     margin-bottom: 20px;
     text-align: center;
 }
-.restaurant-data-lists{
+#restaurant-data-lists{
     width: 100%;
     /*margin: 0 auto;*/
     padding-top: 30px;
@@ -199,7 +199,7 @@ ul, li, dl, ol {
     display: flex;
     flex-wrap : wrap;
 }
-.restaurant-data-lists > .restaurant-info-box {
+#restaurant-data-lists > .restaurant-info-box {
     width: 30%;
     margin: 20px;
     padding: 20px;
@@ -294,7 +294,7 @@ ul, li, dl, ol {
         font-size: 24px;
     }
 
-    .restaurant-data-lists > .res-info-box {
+    #restaurant-data-lists > .res-info-box {
         width: 100%;
     }
 }

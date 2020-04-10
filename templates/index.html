@@ -30,10 +30,10 @@
 			</div>
 			<div class="search-box" id="search-wrap">
 				<div class="city-dropdown dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<button class="btn btn-secondary dropdown-toggle county-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    	-- 구를 선택해주세요 --
 					</button>
-				  	<div class="dropdown-menu cities-dropdown" id="counties-dropdown-wrap">
+				  	<div class="dropdown-menu cities-dropdown" id="counties-dropdown-wrap" style="margin-top: 8px;">
 				  		<ul class="counties-list-group">
 				  			<li class="county-list dropdown-item">강남구</li>
 							<li class="county-list dropdown-item">강동구</li>
@@ -71,12 +71,12 @@
 					</div>
 				</div> 
 			</div> 
-			<ul class="restaurants-names-list list-group"></ul>
+			<ul id="restaurants-list" class="restaurants-names-list list-group"></ul>
 		</div>
 	</div>
 	<div id="restaurant-data-wrap">
-		<div class="county-name-based-restaurant-wrap">
-			<!-- <span class="county-name-based-restaurant-span">강남구에 있는 식당 정보입니다</span> -->
+		<div id="county-name-based-restaurant-wrap">
+			<span class="county-name-based-restaurant-span">강남구에 있는 식당 정보입니다</span>
 		</div>
 		<div class="restaurant-data">
 			<div class="restaurant-filter-lists-wrap">
@@ -109,19 +109,19 @@
 							<span class="form-check-span">제과점</span>
 						</div>
 						<div class="form-check form-check-inline restaurant-lists">
-						  	<input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="분식">
-						  	<label class="form-check-label" for="inlineCheckbox5"></label>
+						  	<input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="분식">
+						  	<label class="form-check-label" for="inlineCheckbox6"></label>
 							<span class="form-check-span">일반대중음식</span>
 						</div>
 						<div class="form-check form-check-inline restaurant-lists">
-						  	<input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="그외">
-						  	<label class="form-check-label" for="inlineCheckbox6"></label>
+						  	<input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="그외">
+						  	<label class="form-check-label" for="inlineCheckbox7"></label>
 							<span class="form-check-span">편의점</span>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="restaurant-data-lists">
+			<div id="restaurant-data-lists">
 				<!-- <div class="restaurant-info-box">
 					<img src="https://nrbe.pstatic.net/styles/basic/1582161745/11/1747/793@2x.png?mt=ar.bg.ol.sw.lko"/>
 					<div class="res-info">
