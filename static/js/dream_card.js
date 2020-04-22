@@ -42,11 +42,12 @@ $(document).ready(function(){
 	// let selected_county = $(".county-button").text();
 	$.ajax({
 		type: "GET",
-		url: "/county?restaurant_name_give="+restaurant_name_val,
+		// url: "/county?restaurant_name_give="+restaurant_name_val,
+		url: "/county",
 		data:{},
 		success: function(response){
 			all_restaurants_infos = response['info'];
-			console.log(response);
+			console.log(all_restaurants_infos);
 			for (let i = 0; i < response['info'].length; i++){
 				let name = response['info'][i]['restaurant_name'];
 
@@ -61,7 +62,6 @@ $(document).ready(function(){
 function restaurantNameValue(input){
 	let selected_restaurant = $(input).text();
 	$("#restaurant-input").val(selected_restaurant);
-	// alert(selected_restaurant);
 }
 
 // 클릭 된 "구" 보여주기
@@ -69,28 +69,19 @@ $(function(){
 	$(".county-list").on("click",function(){
 		$("#dropdownMenuButton").text($(this).text());
 		let county_text = $("#dropdownMenuButton").val($(this).text());
-		// alert("clicked");
 	});
 });
 
-function restaurantSearch(response){
-	// let all_restaurants_infos = response['restaurants'];
-	let restaurant_name_val = $("#restaurant-input").val();
- 	let restaurant_type = $(".restaurant-type-span").text();
- 	let restaurant_address = $(".restaurant-address-span").text();
- 	let restaurant_phoneNumber = $(".restaurant_phoneNumber-span").text();
- 	let selected_county = $(".county-button").text();
+function restaurantSearch(){
+	let selected_county = $(".county-button").text();
 
-	let restaurants_names;
-	for (let i = 0; i < all_restaurants_infos.length; i++){
-		if(all_restaurants_infos[i]['restaurant_name'] == restaurant_name_val){
-			restaurants_names = all_restaurants_infos[i];
-			break;
-		}
-	}
-	// let selected_county2 = restaurants_names['county_name'];
 	let county_name_based_restaurant_span = '<span class="county-name-based-restaurant-span">'+selected_county+'에 있는 식당 정보입니다</span>'
 	$("#county-name-based-restaurant-wrap").html(county_name_based_restaurant_span);
+
+	let restaurant_name_val = $("#restaurant-input").val();
+  	let restaurant_type = $(".restaurant-type-span").text();
+ 	let restaurant_address = $(".restaurant-address-span").text();
+ 	let restaurant_phoneNumber = $(".restaurant-phoneNumber-span").text();
 
 	$.ajax({
 		type: "POST",
@@ -103,12 +94,13 @@ function restaurantSearch(response){
 				county_name_give : selected_county
 			},
 		success: function(response){
-			for (let i = 0; i < response.length; i++){
-
-				let restaurant_name = restaurants[i]["restaurant_name"];
-				let restaurant_address = restaurants[i]["restaurant_address"];
-				let restaurant_phoneNumber = restaurants[i]["restaurant_phoneNumber"]
-				let restaurant_type = restaurants[i]["restaurant_type"];
+			console.log(response);
+			$("#restaurant-data-lists").empty();
+			for (let i = 0; i < response['restaurants'].length; i++){
+				let restaurant_name = response['restaurants'][i]["restaurant_name"];
+				let restaurant_address = response['restaurants'][i]["restaurant_address"];
+				let restaurant_phoneNumber = response['restaurants'][i]["restaurant_phoneNumber"]
+				let restaurant_type = response['restaurants'][i]["restaurant_type"];
 
 		
 				let restaurant_data_lists = '<div class="restaurant-info-box">\
@@ -131,7 +123,6 @@ function restaurantSearch(response){
 				</div>'
 
 				$("#restaurant-data-lists").append(restaurant_data_lists);
-				// console.log(JSON.stringfy(data));
 			}
 		}
 	});

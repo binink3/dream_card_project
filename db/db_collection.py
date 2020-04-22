@@ -105,7 +105,6 @@ for county_file_name in xlsx_files:
             'restaurant_phoneNumber': restaurant_phoneNumber,
             'restaurant_address': restaurant_address,
             'county_name': county_name
-
         }
         num += 1
         db.county_files.insert_one(restaurants_infos) #정보들 insert 하기
